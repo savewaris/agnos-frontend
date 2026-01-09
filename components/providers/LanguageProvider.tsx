@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import { dictionary, Locale, Dictionary } from "@/lib/dictionary";
 
 interface LanguageContextType {
@@ -11,8 +11,42 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+const STORAGE_KEY = "language-preference";
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-    const [locale, setLocale] = useState<Locale>("en");
+    // Initialize with default, but effects will handle the rest
+    const [locale, setLocaleState] = useState<Locale>("en");
+    const [mounted, setMounted] = useState(false);
+
+    // Initial load from local storage
+    useEffect(() => {
+        setMounted(true);
+        const saved = localStorage.getItem(STORAGE_KEY) as Locale;
+        if (saved && (saved === "en" || saved === "th")) {
+            setLocaleState(saved);
+        }
+    }, []);
+
+    // Handle updates and persistence
+    const setLocale = (newLocale: Locale) => {
+        setLocaleState(newLocale);
+        localStorage.setItem(STORAGE_KEY, newLocale);
+    };
+
+    // Listen for storage events (cross-tab sync)
+    useEffect(() => {
+        const handleStorageChange = (e: StorageEvent) => {
+            if (e.key === STORAGE_KEY) {
+                const newValue = e.newValue as Locale;
+                if (newValue && (newValue === "en" || newValue === "th")) {
+                    setLocaleState(newValue);
+                }
+            }
+        };
+
+        window.addEventListener("storage", handleStorageChange);
+        return () => window.removeEventListener("storage", handleStorageChange);
+    }, []);
 
     return (
         <LanguageContext.Provider value={{ locale, setLocale, t: dictionary[locale] }}>

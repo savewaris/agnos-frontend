@@ -133,7 +133,11 @@ export default function StaffDashboard() {
                                 <div className="mt-4 pt-4 border-t border-gray-300 dark:border-gray-700">
                                     <p className="text-xs text-gray-700 dark:text-gray-400 font-semibold mb-1">{t.staff.livePreview}</p>
                                     <div className="grid grid-cols-2 gap-x-2 gap-y-1 text-xs text-gray-800 dark:text-gray-300">
-                                        <div>{t.staff.gender}: {patient.data.gender}</div>
+                                        <div>
+                                            {t.staff.gender}: {
+                                                t.options.gender[patient.data.gender?.toLowerCase() as keyof typeof t.options.gender] || patient.data.gender
+                                            }
+                                        </div>
                                         <div>{t.staff.dob}: {patient.data.birthDate}</div>
                                         <div className="col-span-2 truncate">{t.staff.addr}: {patient.data.address}</div>
                                     </div>

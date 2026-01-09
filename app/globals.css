@@ -1,17 +1,21 @@
+/* 1. Place the @import at the very top of the file */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap');
 @import "tailwindcss";
+
 @variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #f8fafc;
-  /* Slate-50: Softer than pure white */
   --foreground: #0f172a;
-  /* Slate-900: Softer than black */
   --card-bg: #ffffff;
   --card-text: #1e293b;
-  /* Slate-800 */
   --input-bg: #ffffff;
   --border-color: #e2e8f0;
-  /* Slate-200 */
+
+  /* 2. Define the font variable here */
+  --font-thai: "IBM Plex Sans Thai", sans-serif;
+  --font-geist-sans: "Geist Sans", sans-serif;
+  /* Assuming you are using Geist for English */
 }
 
 @theme {
@@ -19,24 +23,26 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* 3. Register the Thai font in the Tailwind theme */
+  --font-thai: var(--font-thai);
 }
-
-
 
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
   --card-bg: #1f2937;
-  /* gray-800 */
   --card-text: #ffffff;
   --input-bg: #374151;
-  /* gray-700 */
   --border-color: #4b5563;
-  /* gray-600 */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+/* 4. When the HTML lang is 'th', swap the main sans variable to the Thai font */
+html[lang="th"] {
+  --font-sans: var(--font-thai);
 }

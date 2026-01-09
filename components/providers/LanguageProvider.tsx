@@ -24,6 +24,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         const saved = localStorage.getItem(STORAGE_KEY) as Locale;
         if (saved && (saved === "en" || saved === "th")) {
             setLocaleState(saved);
+            document.documentElement.lang = saved;
         }
     }, []);
 
@@ -31,6 +32,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const setLocale = (newLocale: Locale) => {
         setLocaleState(newLocale);
         localStorage.setItem(STORAGE_KEY, newLocale);
+        document.documentElement.lang = newLocale;
     };
 
     // Listen for storage events (cross-tab sync)
@@ -40,6 +42,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
                 const newValue = e.newValue as Locale;
                 if (newValue && (newValue === "en" || newValue === "th")) {
                     setLocaleState(newValue);
+                    document.documentElement.lang = newValue;
                 }
             }
         };

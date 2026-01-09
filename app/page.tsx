@@ -21,13 +21,13 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
           <Link
             href="/patient"
-            className="group block p-8 bg-[var(--card-bg)] text-[var(--card-text)] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-blue-100 dark:hover:border-blue-900"
+            className="group block p-8 bg-[var(--card-bg)] text-[var(--card-text)] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-blue-100 dark:hover:border-blue-900 h-80 flex flex-col justify-center"
           >
             <div className="flex flex-col items-center space-y-4">
               <div className="p-4 bg-blue-100 dark:bg-blue-900/30 rounded-full group-hover:bg-blue-600 transition-colors duration-300">
                 <User className="w-8 h-8 text-blue-600 dark:text-blue-400 group-hover:text-white" />
               </div>
-              <h2 className="text-2xl font-bold">{t.home.patientFlow}</h2>
+              <h2 className="text-2xl font-bold text-center">{t.home.patientFlow}</h2>
               <p className="text-sm opacity-80">{t.home.start}</p>
               <div className="flex items-center text-blue-600 dark:text-blue-400 font-semibold mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 {t.home.start} <ArrowRight className="w-4 h-4 ml-1" />
@@ -37,13 +37,13 @@ export default function Home() {
 
           <Link
             href="/staff"
-            className="group block p-8 bg-[var(--card-bg)] text-[var(--card-text)] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-indigo-100 dark:hover:border-indigo-900"
+            className="group block p-8 bg-[var(--card-bg)] text-[var(--card-text)] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-indigo-100 dark:hover:border-indigo-900 h-80 flex flex-col justify-center"
           >
             <div className="flex flex-col items-center space-y-4">
               <div className="p-4 bg-indigo-100 dark:bg-indigo-900/30 rounded-full group-hover:bg-indigo-600 transition-colors duration-300">
                 <Users className="w-8 h-8 text-indigo-600 dark:text-indigo-400 group-hover:text-white" />
               </div>
-              <h2 className="text-2xl font-bold">{t.home.staffDash}</h2>
+              <h2 className="text-2xl font-bold text-center">{t.home.staffDash}</h2>
               <p className="text-sm opacity-80">{t.home.monitor}</p>
               <div className="flex items-center text-indigo-600 dark:text-indigo-400 font-semibold mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 {t.home.monitor} <ArrowRight className="w-4 h-4 ml-1" />

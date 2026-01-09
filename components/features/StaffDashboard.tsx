@@ -72,9 +72,6 @@ export default function StaffDashboard() {
             <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
                 <h1 className="text-3xl font-bold text-gray-800 dark:text-white transition-colors">{t.staff.title}</h1>
                 <div className="flex gap-3">
-                    <Link href="/" className="px-4 py-2 bg-gray-600 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 text-sm font-medium transition">
-                        {t.staff.backHome}
-                    </Link>
                     <Link href="/patient" target="_blank" className="px-4 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 text-sm font-medium transition">
                         {t.staff.openForm}
                     </Link>

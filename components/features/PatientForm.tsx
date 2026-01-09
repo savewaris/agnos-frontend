@@ -100,11 +100,6 @@ export default function PatientForm() {
 
     return (
         <div className="max-w-2xl mx-auto my-10 px-4">
-            <div className="mb-6">
-                <Link href="/" className="px-4 py-2 bg-slate-700 dark:bg-slate-600 text-white rounded-lg hover:bg-slate-800 dark:hover:bg-slate-500 transition-colors inline-block text-sm font-medium">
-                    {t.patient.backHome}
-                </Link>
-            </div>
             <div className="p-6 bg-[var(--card-bg)] shadow-lg rounded-xl transition-colors">
                 <h1 className="text-2xl font-bold mb-6 text-[var(--card-text)]">{t.patient.title}</h1>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
